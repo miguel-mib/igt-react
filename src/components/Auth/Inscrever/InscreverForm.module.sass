@@ -1,0 +1,161 @@
+.controls
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  gap: 1rem
+
+  button
+    background: linear-gradient(-45deg, #6c3ea5, #7e63e1, #6e19d6, #a861ff)
+    background-size: 400% 400%
+    font-weight: 600
+    color: #ffffff
+
+    cursor: pointer
+    outline: none
+    border: none
+
+    border-radius: 1.875rem
+    padding: .75rem 0
+    width: 100%
+
+    -webkit-box-shadow: 10px 10px 40px -12px rgba(0,0,0,0.75)
+    -moz-box-shadow: 10px 10px 40px -12px rgba(0,0,0,0.75)
+    box-shadow: 10px 10px 40px -12px rgba(0,0,0,0.75)
+
+.control
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  gap: .25rem
+
+  *
+    transition: 300ms
+
+  .input-error
+    border: .0625rem solid #fc1532
+    transition: 300ms
+
+  textarea
+    padding: .5rem .5rem
+    min-height: 2.0625rem
+    width: 12.6875rem
+    border-radius: .3125rem
+
+    border: .0625rem solid #d1d1d1
+    background-color: #e7e7e7
+    font-family: inherit
+    outline: none
+
+    font-size: 12px
+    resize: none
+
+    &::-webkit-input-placeholder
+      color: #b8b8b8
+      font-weight: 600
+      transition: 300ms
+
+    &:focus
+      &::-webkit-input-placeholder
+        transition: 300ms
+        color: #ffffff00
+
+  input
+    padding: 0 .5rem
+    height: 2.0625rem
+    width: 12.6875rem
+
+    border-radius: .3125rem
+    outline: none
+    border: .0625rem solid #d1d1d1
+    background-color: #e7e7e7
+
+    &::-webkit-input-placeholder
+      color: #b8b8b8
+      font-weight: 600
+      transition: 300ms
+
+    &:focus
+      &::-webkit-input-placeholder
+        transition: 300ms
+        color: #ffffff00
+
+  .input__foto
+    display: none
+
+  .label__foto
+    padding: 0 .5rem
+    min-height: 2.0625rem
+    width: 12.6875rem
+    border-radius: .3125rem
+
+    display: flex
+    justify-content: left
+    align-items: center
+
+    border: .0625rem solid #d1d1d1
+    background-color: #e7e7e7
+    color: #b8b8b8
+
+    font-size: 12px
+    font-weight: 600
+    cursor: pointer
+
+    &.input-error
+      border: .0625rem solid #fc1532
+      transition: 300ms
+
+    &.opened
+      color: black
+      font-weight: 500
+
+  select
+    border: .0625rem solid #d1d1d1
+    background-color: #e7e7e7
+    border-radius: .3125rem
+
+    padding: 0 .5rem
+    height: 2.1875rem
+    width: 13.9375rem
+
+    font-weight: 600
+    color: #b8b8b8
+    outline: none
+    cursor: pointer
+
+    &.opened
+      font-weight: 500
+      color: black
+
+    option
+      color: #b8b8b8
+
+  &.links__control
+    display: flex
+
+
+    .links
+      display: flex
+      flex-direction: column
+      justify-content: center
+      align-items: center
+      gap: .25rem
+
+      .links__input:nth-last-child(1)
+        margin-right: auto
+        width: calc( 75/100 * 10rem)
+
+    .links__button
+      // $button: 12.6875rem
+      $button: 10rem
+      width: calc( 20/100 * $button)
+      height: calc( 20/100 * $button)
+
+.erro
+  display: none
+  margin: .2rem auto .2rem
+  color: #fc1532
+
+  &.show
+    display: block
