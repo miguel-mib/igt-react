@@ -131,26 +131,29 @@
     option
       color: #b8b8b8
 
-  &.links__control
+.control__links
+  .links-wrapper
     display: flex
+    gap: .5rem
 
+    input
+      width: 10rem
 
-    .links
+    button
+      background: #fff
+      color: #c23434
+      border: 1px #c23434 solid
+      width: 2.1875rem
+      height: 2.1875rem
+      border-radius: 10px
       display: flex
-      flex-direction: column
       justify-content: center
       align-items: center
-      gap: .25rem
 
-      .links__input:nth-last-child(1)
-        margin-right: auto
-        width: calc( 75/100 * 10rem)
-
-    .links__button
-      // $button: 12.6875rem
-      $button: 10rem
-      width: calc( 20/100 * $button)
-      height: calc( 20/100 * $button)
+  .add-btn
+    background: #333333
+    width: 13.8125rem
+    margin: .5rem 0 .25rem 0
 
 .erro
   display: none

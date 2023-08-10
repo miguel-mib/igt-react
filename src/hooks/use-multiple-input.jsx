@@ -1,46 +1,54 @@
 import { useState } from "react";
 
 const useMultipleInput = (validateFunction) => {
-  const [valuesArray, setValuesArray] = useState([""]);
-  const [isTouchedArary, setIsTouchedArary] = useState([false]);
-
-  const isValidArray = valuesArray.map((value) => validateFunction(value));
-
-  const hasErrorArray = valuesArray.map((value, index) => {
-    const isValid = isValidArray[index];
-    const isTouched = isTouchedArary[index];
-
-    return !isValid && isTouched;
-  });
+  const defaultValue = {
+    value: "",
+    isTouched: false,
+    isValid: false,
+  };
+  const [valuesArray, setValuesArray] = useState([defaultValue]);
+  valuesArray.forEach(linkObj => {
+    linkObj.isValid = validateFunction(linkObj.value)
+  })
 
   const addValueHandle = () => {
-    setValuesArray((prevArray) => [...prevArray, ""]);
+    setValuesArray((prevArray) => [...prevArray, defaultValue]);
+  };
+
+  const deleteValueHandle = (index) => {
+    setValuesArray((prevArray) => {
+      const array = [...prevArray]
+      array.splice(index, 1);
+      return [...array];
+    });
   };
 
   const inputBlurHandle = (index) => {
-    const newIsTouchedArary = [...isTouchedArary];
-    newIsTouchedArary[index] = true;
-    setIsTouchedArary(newIsTouchedArary);
+    setValuesArray((prevArray) => {
+      const array = [...prevArray]
+      array[index].isTouched = true;
+      return [...array];
+    });
   };
 
   const valueChangeHandle = (index, value) => {
-    const newValuesArray = [...valuesArray];
-    newValuesArray[index] = value;
-    setValuesArray(newValuesArray);
+    setValuesArray((prevArray) => {
+      const array = [...prevArray]
+      array[index].value = value;
+      return [...array];
+    });
   };
 
   const reset = () => {
-    setValuesArray([""]);
-    setIsTouchedArary([false]);
+    setValuesArray([defaultValue]);
   };
 
   return {
     addValueHandle,
     valueChangeHandle,
     inputBlurHandle,
+    deleteValueHandle,
     valuesArray,
-    isValidArray,
-    hasErrorArray,
     reset,
   };
 };

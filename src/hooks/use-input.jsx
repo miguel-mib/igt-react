@@ -19,7 +19,7 @@ const useInput = (validateFunction) => {
     setValue("");
     setIsTouched(false);
   };
-
+  
   return {
     value,
     isValid,

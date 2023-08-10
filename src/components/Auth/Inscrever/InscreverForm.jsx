@@ -3,9 +3,11 @@ import { useState } from "react";
 import Button from "../../UI/Button/Button";
 import useInput from "../../../hooks/use-input";
 import useMultipleInput from "../../../hooks/use-multiple-input";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const InscreverForm = (props) => {
   const [error, setError] = useState({ show: false, message: "" });
+  const [linkObrigatorio, setLinkObrigatorio] = useState(true);
 
   const {
     value: nome,
@@ -14,7 +16,7 @@ const InscreverForm = (props) => {
     valueChangeHandle: nomeChangeHandle,
     inputBlurHandle: nomeInputBlurHandle,
     reset: nomeReset,
-  } = useInput((nome) => nome.trim().split(" ").length >= 2);
+  } = useInput((nome) => nome.trim().length !== 0);
 
   const {
     value: tel,
@@ -38,7 +40,7 @@ const InscreverForm = (props) => {
     value: categoria,
     isValid: categoriaIsValid,
     hasError: categoriaHasError,
-    valueChangeHandle: categoriaChangeHandle,
+    valueChangeHandle: categoriaInputChangeHandle,
     inputBlurHandle: categoriaInputBlurHandle,
     reset: categoriaReset,
   } = useInput((categoria) => categoria.trim() !== "");
@@ -50,7 +52,7 @@ const InscreverForm = (props) => {
     valueChangeHandle: fotoChangeHandle,
     inputBlurHandle: fotoInputBlurHandle,
     reset: fotoReset,
-  } = useInput((inputFoto) => inputFoto);
+  } = useInput((inputFoto) => inputFoto !== "");
 
   const {
     value: exp,
@@ -63,43 +65,52 @@ const InscreverForm = (props) => {
 
   const {
     valuesArray: linksArray,
-    hasErrorArray: linksHasErrorArray,
-    isValidArray: linksIsValidArray,
     valueChangeHandle: linksChangeHandle,
     inputBlurHandle: linksInputBlurHandle,
     addValueHandle: linksAddValueHandle,
+    deleteValueHandle: linksDeleteValueHandle,
     reset: linksArrayReset,
-  } = useMultipleInput((URL) => URL);
+  } = useMultipleInput((URL) => URL.trim() !== "");
 
-  const linksInputArray = linksArray.map((linkValue, index) => {
-    const isLastInput = linksArray.length - 1 === index;
-    const inputClass = isLastInput
-      ? `${classes["links__input"]} ${classes["links__item"]}`
-      : "";
-    console.log(inputClass);
+  const linksInputArray = linksArray.map((linkObj, index) => {
+    const hasError = linkObj.isTouched && !linkObj.isValid;
+
     return (
-      <input
-        key={index}
-        type="url"
-        id="link"
-        value={linkValue}
-        placeholder="Link"
-        onChange={(event) => {
-          linksChangeHandle(index, event.target.value);
-        }}
-        onBlur={() => {
-          linksInputBlurHandle(index);
-        }}
-        className={
-          linksHasErrorArray[index]
-            ? `${classes["input-error"]} ${inputClass}`
-            : inputClass
-        }
-      />
+      <div key={index} className={classes["links-wrapper"]}>
+        <input
+          type="url"
+          id="link"
+          value={linkObj.value}
+          data-asterisco={linkObrigatorio ? "*" : ""}
+          placeholder="Link"
+          onChange={(event) => {
+            linksChangeHandle(index, event.target.value);
+          }}
+          onBlur={() => {
+            linksInputBlurHandle(index);
+          }}
+          className={hasError && linkObrigatorio ? classes["input-error"] : ""}
+        />
+        <button
+          onClick={() => {
+            linksDeleteValueHandle(index);
+          }}
+        >
+          <DeleteIcon />
+        </button> 
+      </div>
     );
   });
 
+  const categoriaChangeHandle = (event) => {
+    categoriaInputChangeHandle(event);
+    setLinkObrigatorio(event.target.value === "0" || event.target.value === "1");
+  };
+
   const someIsInvalid = () => {
+    const linksIsValid = linkObrigatorio
+      ? linksArray.map((linkObj) => linkObj.isValid)
+      : [];
     const validation = [
       nomeIsValid,
       telIsValid,
@@ -107,7 +118,7 @@ const InscreverForm = (props) => {
       turmaIsValid,
       expIsValid,
       fotoIsValid,
-      ...linksIsValidArray,
+      ...linksIsValid,
     ];
 
     return validation.some((isValid) => !isValid);
@@ -120,25 +131,26 @@ const InscreverForm = (props) => {
     if (someIsInvalid()) {
       setError({ show: true, message: "Formulário inválido." });
       return;
-    } else {
-      props.onFormSubmit({
-        nome,
-        tel,
-        categoria,
-        turma,
-        exp,
-        linksArray,
-        foto,
-      });
-
-      nomeReset();
-      telReset();
-      turmaReset();
-      categoriaReset();
-      expReset();
-      fotoReset();
-      linksArrayReset();
     }
+
+    const links = linksArray.filter(link => link.length > 0)
+    props.onFormSubmit({
+      nome,
+      tel,
+      categoria,
+      turma,
+      exp,
+      links,
+      foto,
+    });
+
+    nomeReset();
+    telReset();
+    turmaReset();
+    categoriaReset();
+    expReset();
+    fotoReset();
+    linksArrayReset();
   };
 
   const turmas = Array.from({ length: 19 }, (_, index) =>
@@ -220,20 +232,22 @@ const InscreverForm = (props) => {
             type="text"
             id="exp"
             value={exp}
-            placeholder="Explicação"
+            placeholder="Explique sua apresentação"
+            data-asterisco="*"
             onBlur={expInputBlurHandle}
             onChange={expChangeHandle}
             className={expHasError ? classes["input-error"] : ""}
           />
         </div>
-        <div className={`${classes["control"]} ${classes["links__control"]}`}>
-          <div className={classes["links"]}>{linksInputArray}</div>
-          <button
-            className={classes["links__button"]}
+        <div className={`${classes["control"]} ${classes["control__links"]}`}>
+          {linksInputArray}
+          <Button
+            className={classes["add-btn"]}
+            type="button"
             onClick={linksAddValueHandle}
           >
-            +
-          </button>
+            Adicionar link
+          </Button>
         </div>
         <div className={classes["control"]}>
           <label

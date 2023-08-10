@@ -5,7 +5,7 @@ const Button = (props) => {
   if (props.bgcolor) {
     style["background"] = props.bgcolor;
   }
-
+  
   return <button style={style} type={props.type} onClick={props.onClick} className={`${classes["button"]} ${props.className}`}>{props.children}</button>;
 };
 

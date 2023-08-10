@@ -1,42 +1,92 @@
 [
   {
-      "nome": "João da Silva",
-      "tel": "(11) 1234-5678",
-      "turma": "M01",
-      "categoria": "Música",
-      "explicacao": "Vou apresentar um repertório diversificado de músicas populares, com foco em entretenimento e interação com o público.",
-      "foto": "joao_silva.jpg"
+    "id": 1,
+    "aceito": 0,
+    "nome": "João da Silva",
+    "tel": "(11) 1234-5678",
+    "turma": "M01",
+    "categoria": "Música",
+    "explicacao": "Vou apresentar um repertório diversificado de músicas populares, com foco em entretenimento e interação com o público.",
+    "foto": "joao_silva.jpg",
+    "links": [
+      "https://www.youtube.com/joaosilvamusic",
+      "https://www.instagram.com/joaosilvamusic",
+      "https://www.spotify.com"
+    ]
   },
   {
-      "nome": "Maria Souza",
-      "tel": "(22) 9876-5432",
-      "turma": "M02",
-      "categoria": "Dança",
-      "explicacao": "Minha apresentação de dança será cheia de energia, com coreografias modernas e contagiantes.",
-      "foto": "maria_souza.jpg"
+    "id": 2,
+    "aceito": 2,
+    "nome": "Maria Souza",
+    "tel": "(22) 9876-5432",
+    "turma": "M02",
+    "categoria": "Dança",
+    "explicacao": "Minha apresentação de dança será cheia de energia, com coreografias modernas e contagiantes.",
+    "foto": "maria_souza.jpg",
+    "links": [
+      "https://www.youtube.com/mariadance",
+      "https://www.instagram.com/mariadance",
+      "https://www.netflix.com"
+    ]
   },
   {
-      "nome": "Carlos Ferreira",
-      "tel": "(33) 5555-1234",
-      "turma": "M03",
-      "categoria": "Artes visuais",
-      "explicacao": "Vou expor minhas pinturas a óleo que retratam a beleza da natureza e das paisagens urbanas.",
-      "foto": "carlos_ferreira.jpg"
+    "id": 3,
+    "aceito": 1,
+    "nome": "Carlos Ferreira",
+    "tel": "(33) 5555-1234",
+    "turma": "M03",
+    "categoria": "Artes visuais",
+    "explicacao": "Vou expor minhas pinturas a óleo que retratam a beleza da natureza e das paisagens urbanas.",
+    "foto": "carlos_ferreira.jpg",
+    "links": [
+      "https://www.carlosferreiraart.com",
+      "https://www.instagram.com/carlosferreiraart",
+      "https://www.amazon.com"
+    ]
   },
   {
-      "nome": "Ana Rodrigues",
-      "tel": "(44) 6666-7890",
-      "turma": "M04",
-      "categoria": "Stand Up",
-      "explicacao": "Prepare-se para muitas risadas! Vou contar histórias engraçadas do dia a dia e interagir com o público.",
-      "foto": "ana_rodrigues.jpg"
+    "id": 4,
+    "aceito": 0,
+    "nome": "Ana Rodrigues",
+    "tel": "(44) 6666-7890",
+    "turma": "M04",
+    "categoria": "Stand Up",
+    "explicacao": "Prepare-se para muitas risadas! Vou contar histórias engraçadas do dia a dia e interagir com o público.",
+    "foto": "ana_rodrigues.jpg",
+    "links": [
+      "https://www.youtube.com/anastandup",
+      "https://www.instagram.com/anastandup",
+      "https://www.imdb.com"
+    ]
   },
   {
-      "nome": "Márcia Santos",
-      "tel": "(55) 2222-3333",
-      "turma": "M05",
-      "categoria": "Poesia",
-      "explicacao": "Minha apresentação de poesia vai explorar temas profundos e emocionais, expressando sentimentos através das palavras.",
-      "foto": "marcia_santos.jpg"
+    "id": 5,
+    "aceito": 1,
+    "nome": "Márcia Santos",
+    "tel": "(55) 2222-3333",
+    "turma": "M05",
+    "categoria": "Poesia",
+    "explicacao": "Minha apresentação de poesia vai explorar temas profundos e emocionais, expressando sentimentos através das palavras.",
+    "foto": "marcia_santos.jpg",
+    "links": [
+      "https://www.poetrybymarcia.com",
+      "https://www.instagram.com/marcia_poetry",
+      "https://www.wikipedia.org"
+    ]
+  },
+  {
+    "id": 6,
+    "aceito": 2,
+    "nome": "Jorge Juliano",
+    "tel": "(12) 3456-7890 ",
+    "turma": "M08",
+    "categoria": "Poesia",
+    "explicacao": "Minha apresentação de poesia vai explorar temas profundos e emocionais, expressando sentimentos através das palavras.",
+    "foto": "jorge_juliano.jpg",
+    "links": [
+      "https://www.poetrybymarcia.com",
+      "https://www.instagram.com/marcia_poetry",
+      "https://www.wikipedia.org"
+    ]
   }
 ]

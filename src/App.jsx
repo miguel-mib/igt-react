@@ -8,7 +8,7 @@ import InscreverRoot from "./pages/Auth/Inscrever";
 import AdmPedidos from "./components/Adm/Pedidos/Pedidos";
 import AdmPlacar from "./components/Adm/Placar/Placar";
 import AdmGerador from "./components/Adm/Gerador/Gerador";
-import Testes from "./Testes"
+import Testes from "./Testes.jsx"
 
 const router = createBrowserRouter([
   {
@@ -35,7 +35,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/testes",
-    element: <Testes />
+    element: Testes
   }
 ]);
 
@@ -48,3 +48,4 @@ const App = () => {
 };
 
 export default App;
+ 

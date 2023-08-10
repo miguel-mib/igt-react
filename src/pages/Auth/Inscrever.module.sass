@@ -1,6 +1,5 @@
 body
   background: linear-gradient(to left, #a55ffc, #7d2cde)
-  // overflow: hidden
 
 .inscrever__wrapper
   display: flex
@@ -8,6 +7,7 @@ body
   justify-content: center
   align-items: center
   gap: 2rem
+  margin-top: 2rem
 
   img
     width: 7.5rem
@@ -35,42 +35,6 @@ body
 .cr
   color: #fff
   font-size: .75rem
-
-.loader__wrapper
-  display: none
-  height: 100vh
-  width: 100vw
-  background: #ffffff34
-  z-index: 99
-
-  position: absolute
-  top: 0
-  left: 0
-  right: 0
-  bottom: 0
-  margin: auto
-
-  &.show
-    display: block
-
-.loader
-  width: 3.75rem
-  height: 3.75rem
-  border-radius: 50%
-  background: radial-gradient(farthest-side,#6c3ea5 94%,#0000) top/8px 8px no-repeat, conic-gradient(#0000 30%,#6c3ea5)
-  -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 8px),#000 0)
-  animation: loader 1s infinite linear
-
-  position: absolute
-  top: 0
-  left: 0
-  right: 0
-  bottom: 0
-  margin: auto
-
-  @keyframes loader
-    100%
-      transform: rotate(1turn)
 
 .button__entrar
   width: 9.375rem
