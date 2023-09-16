@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface IUser {
   voucher: string;
   adm: boolean;
+  votou: boolean;
 }
 
 export interface IAuthState {
@@ -22,6 +23,9 @@ const authSlice = createSlice({
     setUser(state, action: PayloadAction<IUser>) {
       state.user = action.payload;
       state.logado = !!action.payload;
+    },
+    setVotou(state) {
+      if (state.user) state.user.votou = true;
     },
     logoutUser: state => {
       state.user = null;
