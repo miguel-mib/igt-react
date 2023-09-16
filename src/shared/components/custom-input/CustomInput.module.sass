@@ -1,0 +1,59 @@
+.control
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  gap: 0.25rem
+
+  position: relative
+
+.input
+  outline: none
+  position: relative
+  border: 1px solid gray
+  box-sizing: border-box
+  border-radius: 5px
+  width: 225px
+  padding: 0.75rem 1rem
+  font-size: 1rem
+
+  &:focus
+    border: 1px solid #8b1727
+
+    &:-webkit-autofill
+      -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important
+
+  &::-webkit-input-placeholder
+    opacity: 0
+
+  @media only screen and (min-width: 320px) and (max-width: 375px)
+    padding: 0.75rem
+
+.input.erro
+  border: 0.0625rem solid #fc1532
+
+.label
+  position: absolute
+  left: 1rem
+  top: 50%
+  transform: translateY(-50%)
+  color: gray
+  font-size: 1rem
+  letter-spacing: 1px
+  transition: all 200ms ease
+  cursor: text
+  user-select: none
+  cursor: default
+  pointer-events: none
+
+.input:focus + .label,
+.input:not(:placeholder-shown) + .label
+  top: 0
+  font-size: 0.8rem
+  color: #8b1727
+  background: #fff
+  padding: 0.3125rem
+  cursor: default
+
+.input.erro + .label
+  color: #fc1532
