@@ -3,6 +3,7 @@ interface IParticipante {
   nome: string;
   turma: string;
   categoria: string;
+  foto: string;
   titulo: string;
 }
 
@@ -13,6 +14,7 @@ export const _PARTICIPANTES: IParticipante[] = [
     turma: "M02",
     categoria: "Desenho",
     titulo: "Caminhos da Alma",
+    foto: "/assets/guest.png", 
   },
   {
     id: "2",
@@ -20,6 +22,7 @@ export const _PARTICIPANTES: IParticipante[] = [
     turma: "M02",
     categoria: "Desenho",
     titulo: "Queen",
+    foto: "/assets/guest.png", 
   },
   {
     id: "3",
@@ -27,6 +30,7 @@ export const _PARTICIPANTES: IParticipante[] = [
     turma: "M13",
     categoria: "Desenho",
     titulo: "O motociclista",
+    foto: "/assets/guest.png", 
   },
   {
     id: "4",
@@ -34,6 +38,7 @@ export const _PARTICIPANTES: IParticipante[] = [
     turma: "M09",
     categoria: "Desenho",
     titulo: "Um Sonho",
+    foto: "/assets/guest.png", 
   },
   {
     id: "5",
@@ -41,6 +46,7 @@ export const _PARTICIPANTES: IParticipante[] = [
     turma: "M06",
     categoria: "Desenho",
     titulo: "Me engane, Senhor Empresário.",
+    foto: "/assets/guest.png", 
   },
   {
     id: "6",
@@ -48,6 +54,7 @@ export const _PARTICIPANTES: IParticipante[] = [
     turma: "M01",
     categoria: "Desenho",
     titulo: "Reconstrução - Tomie",
+    foto: "/assets/guest.png", 
   },
   {
     id: "7",
@@ -55,5 +62,6 @@ export const _PARTICIPANTES: IParticipante[] = [
     turma: "M07",
     categoria: "Poesia",
     titulo: "Professor",
+    foto: "/assets/guest.png", 
   },
 ];

@@ -1,16 +1,17 @@
 import { useDispatch } from "react-redux";
-import styles from "./Participante.module.sass";
-import { MouseEventHandler, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { setParticipante } from "../../store/participante-reducer";
 import { useSelector } from "react-redux";
 import { RootSelector } from "../../store/selectors";
+import styles from "./Participante.module.sass";
 
-export interface IParticipanteProps {
+interface IParticipanteProps {
   participante: {
     nome: string;
     turma: string;
     categoria: string;
     titulo: string;
+    foto: string;
     id: string;
   };
 }
@@ -19,7 +20,7 @@ export const Participante: React.FC<IParticipanteProps> = ({
   participante,
 }) => {
   const dispatch = useDispatch();
-  const { nome, turma, titulo, categoria, id } = participante;
+  const { nome, turma, titulo, categoria, foto, id } = participante;
 
   const [selecionado, setSelecionado] = useState<boolean>(false);
   const IDParticipanteSelecionado = useSelector(
@@ -30,18 +31,23 @@ export const Participante: React.FC<IParticipanteProps> = ({
     setSelecionado(IDParticipanteSelecionado === id);
   }, [IDParticipanteSelecionado, id]);
 
-  const handleButtonClick: MouseEventHandler<HTMLButtonElement> = () => {
+  const handleButtonClick = () => {
     dispatch(setParticipante({ id, nome }));
   };
 
   return (
     <li className={`${styles.card} ${selecionado && styles.selecionado}`}>
-      <h1 className={styles.nome}>{nome}</h1>
-      <h2 className={styles.turma}>{turma}</h2>
-      <h2 className={styles.titulo}>{titulo}</h2>
-      <h2 className={styles.categoria}>{categoria}</h2>
+      <div className={styles.aluno}>
+        <img className={styles.foto} src={foto} alt={nome} />
+        <h1 className={styles.nome}>{nome}</h1>
+        <span className={styles.turma}>{turma}</span>
+      </div>
+      <div className={styles.apresentacao}>
+        <h1 className={styles.titulo}>{titulo}</h1>
+        <h2 className={styles.categoria}>{categoria}</h2>
+      </div>
       <button
-        className={styles.selecionarButton}
+        className={styles.selectBtn}
         type="button"
         onClick={handleButtonClick}
       >

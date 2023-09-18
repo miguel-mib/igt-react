@@ -22,7 +22,7 @@ export const Login: React.FC = () => {
       return;
     }
 
-    dispatch(setUser({ voucher, adm: false }));
+    dispatch(setUser({ voucher, adm: false, votou: false }));
   };
 
   return (
