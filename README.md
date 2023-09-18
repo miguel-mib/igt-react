@@ -1,27 +1,37 @@
-# React + TypeScript + Vite
+# IFES'S GOT TALENT
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicativo para o show de talentos elaborado e criado por minha turma no IFES.
 
-Currently, two official plugins are available:
+## Status do projeto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Em desenvolvimento
 
-## Expanding the ESLint configuration
+## Imagens
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Sem imagens por enquanto.
 
-- Configure the top-level `parserOptions` property like this:
+## Sobre o projeto
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+### Tecnologias
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- React
+- React Redux
+- React Router Dom
+- React Icons
+- Typescript
+- Javascript
+- SASS
+
+### Objetivo
+
+Este é um projeto em desenvolvimento para um trabalho de Show de Talentos no IFES.
+
+Ele tem como objetivo principal fornecer um método de votação para o show, onde todos os estudantes e servidores do campus terão um voucher próprio, na qual usarão como login para votar.
+
+### Dificuldades
+
+Atualmente, minha maior dificuldade está sendo as cores.
+
+### Instalação
+
+Fiz a instalão utilizando o calderplate ` yarn create vite my-react-ts-app --template react-ts `, pra facilitar a minha configuração. Entretanto, este comando trás consigo diversos arquivos "inúteis" que eu excluí, tais como os arquivos de teste.
