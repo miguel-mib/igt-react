@@ -1,25 +1,28 @@
 $color-main-1: #c72f43
 $color-main-2: #e47d8b
-
-$color-gold: #f7bb4c
+// $color-main-3: 
+$color-gold: #f7bb4c 
 
 .card
   margin: 0
   padding: 0
   border: 0
-  background: #fff
+  background: #FFF6F5
 
   color: #242522
   padding: 2rem 1rem
   width: 70vw
 
   border-radius: 15px
-  border: 1px transparent solid
+  border: 2px transparent solid
 
   display: flex
   flex-direction: column
   justify-content: center
   align-items: center
+
+  -moz-box-shadow: 10px 10px 40px -12px rgba(0, 0, 0, 0.25)
+  box-shadow: 10px 10px 40px -12px rgba(0, 0, 0, 0.25)
 
   gap: 1rem
 
@@ -31,8 +34,10 @@ $color-gold: #f7bb4c
   text-align: center
 
 .foto
-  width: 50%
-  height: auto
+  $fotoSize: 8rem
+  width: $fotoSize
+  height: $fotoSize
+  aspect-ratio: 1/1
   border-radius: 50%
 
 .nome
@@ -66,13 +71,20 @@ $color-gold: #f7bb4c
 
 .selectBtn
   background-color: $color-gold
-  width: 60%
-  padding: .75rem 1rem
   color: #f9fff1
+
+  border: 1px transparent solid
+  padding: .75rem 5rem
   border-radius: 15px
   font-size: 1rem
+  width: 60%
+
+  margin-top: auto
   cursor: pointer
-  border: 1px transparent solid
+
+  display: flex
+  justify-content: center
+  align-items: center
 
 .selecionado
   border-color: $color-gold
@@ -80,7 +92,6 @@ $color-gold: #f7bb4c
   .selectBtn
     border-color: $color-gold
     background: transparent
-    color: inherit
     color: $color-gold
 
 @media screen and (min-width: 600px)

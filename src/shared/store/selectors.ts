@@ -1,10 +1,10 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import authReducer from "./auth-reducer";
-import participanteReducer from "./participante-reducer";
+import candidatoReducer from "./candidato-reducer";
 
 const rootReducer = combineReducers({
   auth: authReducer,
-  participante: participanteReducer,
+  candidato: candidatoReducer,
 });
 
 export type RootSelector = ReturnType<typeof rootReducer>;

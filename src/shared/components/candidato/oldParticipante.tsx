@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { setParticipante } from "../../store/participante-reducer";
+import { setCandidato } from "../../store/candidato-reducer";
 import { useSelector } from "react-redux";
 import { RootSelector } from "../../store/selectors";
 import styles from "./Participante.module.sass";
@@ -32,7 +32,7 @@ export const Participante: React.FC<IParticipanteProps> = ({
   }, [IDParticipanteSelecionado, id]);
 
   const handleButtonClick = () => {
-    dispatch(setParticipante({ id, nome }));
+    dispatch(setCandidato({ id, nome }));
   };
 
   return (

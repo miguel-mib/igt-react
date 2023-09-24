@@ -18,6 +18,7 @@
   border-radius: 0.3125rem
   padding: 2rem 3rem
   min-height: 18.75rem
+  width: 14rem
   -webkit-box-shadow: 10px 10px 40px -12px rgba(0, 0, 0, 0.75)
   -moz-box-shadow: 10px 10px 40px -12px rgba(0, 0, 0, 0.75)
   box-shadow: 10px 10px 40px -12px rgba(0, 0, 0, 0.75)
@@ -42,14 +43,29 @@
 .erro
   margin: -.5rem auto
   color: #fc1532
+  text-align: center
 
 .instagram
-  outline: none
-  border: none
-  cursor: pointer
+  color: #8b1727
+  height: 2rem
 
-  & img
-    height: 2rem
+.loader
+  $loaderSize: 1rem
+  width: $loaderSize
+  height: $loaderSize
+  border-radius: 50%
+  display: inline-flex
+  border-top: 2px solid #FFF
+  border-right: 2px solid transparent
+  box-sizing: border-box
+  animation: rotation 1s linear infinite
+
+@keyframes rotation
+  0%
+    transform: rotate(0deg)
+
+  100%
+    transform: rotate(360deg)
 
 .cr
   color: #fff
