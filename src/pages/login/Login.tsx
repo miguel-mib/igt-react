@@ -8,7 +8,7 @@ import styles from "./Login.module.sass";
 
 export const Login: React.FC = () => {
   const dispatch = useDispatch();
-  const [erro, setErro] = useState<string>("");
+  const [erro, setErro] = useState<string | null>(null);
   const [voucher, setVoucher] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -18,15 +18,16 @@ export const Login: React.FC = () => {
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async event => {
     event.preventDefault();
-    setLoading(true);
     setErro("");
+
+    if (loading) return;
 
     if (voucher.length !== 6) {
       setErro("Voucher inválido.");
-      setLoading(false);
       return;
     }
 
+    setLoading(true);
     try {
       const response = await axios.get(
         `https://www.lifeeng.com.br/igt/api/api.php?option=login&voucher=${voucher}`
@@ -34,7 +35,7 @@ export const Login: React.FC = () => {
 
       if (!response.data.aceito) throw new Error(response.data.message);
 
-      dispatch(setUser({ ...response.data }));
+      dispatch(setUser({ ...response.data.voucher }));
     } catch (e) {
       const error = e as AxiosError;
 
@@ -48,7 +49,7 @@ export const Login: React.FC = () => {
   return (
     <div className={styles.main}>
       <figure className={styles.logo}>
-        <img src="/assets/logo.svg" alt="Logo IGT" />
+        <img src="logo.svg" alt="Logo IGT" />
       </figure>
       <div className={styles.entrar}>
         <h1 className={styles.titulo}>Entrar</h1>

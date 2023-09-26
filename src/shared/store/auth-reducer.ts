@@ -2,16 +2,19 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface IUser {
   voucher: string;
+  qvotos: number;
 }
 
 export interface IAuthState {
   user: IUser | null;
   logado: boolean;
+  votou: boolean;
 }
 
 const initialState: IAuthState = {
   user: null,
   logado: false,
+  votou: false,
 };
 
 const authSlice = createSlice({
@@ -22,6 +25,9 @@ const authSlice = createSlice({
       state.user = action.payload;
       state.logado = !!action.payload;
     },
+    setVotou(state, action: PayloadAction<boolean>) {
+      state.votou = action.payload;
+    },
     logoutUser: state => {
       state.user = null;
       state.logado = false;
@@ -29,5 +35,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { setUser, setVotou, logoutUser } = authSlice.actions;
+export const { setUser, logoutUser } = authSlice.actions;
 export default authSlice.reducer;

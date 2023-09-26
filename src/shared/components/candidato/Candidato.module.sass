@@ -1,91 +1,81 @@
 $color-main-1: #c72f43
-$color-main-2: #e47d8b
-// $color-main-3: 
 $color-gold: #f7bb4c
 
 .card
   margin: 0
   padding: 0
   border: 0
-  background: #FFF6F5
+  background: transparent
 
   color: #242522
-  padding: 2rem 1rem
-  width: 30rem
-  height: 5rem
-
-  border-radius: 15px
-  border: 2px transparent solid
+  width: 17rem
+  min-height: 5rem
+  padding: 0 1rem
 
   display: flex
   justify-content: center
+  flex-direction: column
   align-items: center
 
-  -moz-box-shadow: 10px 10px 40px -12px #00000040
-  box-shadow: 10px 10px 40px -12px rgba(0, 0, 0, 0.25)
+  -moz-box-shadow: 10px 10px 30px -20px #00000040
+  box-shadow: 10px 10px 30px -20px rgba(0, 0, 0, 0.25)
+  border-radius: 2px
+
+.borderWrapper
+  height: 100%
+  width: 100%
+  padding: 2rem 1rem
+  border-radius: 2px
+
+  display: flex
+  justify-content: center
+  box-shadow: inset 0 0 0 1px $color-main-1
+  flex-direction: column
+  align-items: center
 
   gap: 1rem
 
-.visual
-  display: flex
-  flex-direction: column
-  justify-content: center
-  align-items: center
-  text-align: center
-
-  position: relative
-  width: 30%
-
-.foto
-  $fotoSize: 6rem
-  border: 1px gray solid
-  width: $fotoSize
-  height: $fotoSize
-  aspect-ratio: 1/1
-  border-radius: 50%
-
-.categoria
+.nome, .sala
   $color: crimson
 
-  padding: .15rem .25rem
-  border: 1px $color-main-1 solid
   border-radius: 2px
-  font-size: 1rem
-  bottom: 0
+  font-size: 1.3rem
+  text-align: center
+  width: 80%
 
-  background: #FFF6F5
-  position: absolute
   color: $color
 
-  -moz-box-shadow: 10px 10px 40px -12px #00000040
-  box-shadow: 10px 10px 40px -12px rgba(0, 0, 0, 0.25)
+.sala 
+  font-size: 1rem
 
-.infos
+.aprInfo
+  margin: 1rem 0
+
   display: flex
-  flex-direction: column
   justify-content: center
-  align-items: left
-  gap: .2rem
-  height: 100%
-  flex: 1
+  flex-direction: column
+  align-items: center
+  gap: 0.50rem
 
-.nome
-  font-size: 1.1rem
+.categoria
+  font-size: 1rem
   font-weight: 600
+  text-align: center
 
 .titulo
   font-size: 0.9rem
   color: #3e3f3c
+  text-align: center
 
 .selectBtn
-  background: transparent
-  color: $color-gold
-  border: 1px $color-gold solid
-  border-radius: 5px
-
-  margin-left: auto
+  background: $color-main-1
+  color: #FFF6F5
+  border: 1px $color-main-1 solid
+  border-radius: 2px
+  margin-top: 1rem
 
   font-size: 1rem
+  font-weight: 100
   padding: .5rem 1rem
   margin-top: auto
 
@@ -94,8 +84,31 @@ $color-gold: #f7bb4c
   justify-content: center
   align-items: center
 
+.checkmarkWrapper
+  $checkSize: 2.5rem
+  display: none
+  position: absolute
+
+  background-color: $color-gold
+  height: $checkSize
+  width: $checkSize
+
+  clip-path: polygon(0 0, 0% 100%, 100% 0)
+
+  top: 0
+  left: 0
+
 .selecionado
-  border-color: $color-gold
+  position: relative
+
+  .borderWrapper
+    box-shadow: inset 0 0 0 2px $color-gold
+
+  .checkmarkWrapper
+    display: block
+
+  .nome, .sala
+    color: $color-gold
 
   .selectBtn
     border-color: $color-gold
@@ -104,23 +117,7 @@ $color-gold: #f7bb4c
 
 @media screen and (max-width: 600px)
   .card
-    height: 4rem
     width: 75vw
 
-  .foto
-    $fotoSize: 5rem
-    width: $fotoSize
-    height: $fotoSize
-
-  .categoria
-    font-size: .8rem
-
-  .nome
-    font-size: 1rem
-
   .titulo
-    font-size: 0.8rem
-
-  .selectBtn
-    padding: .5rem .75rem
     font-size: 0.8rem

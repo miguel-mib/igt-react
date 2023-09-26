@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { setCandidato } from "../../store/candidato-reducer";
 import { useSelector } from "react-redux";
 import { RootSelector } from "../../store/selectors";
+import { FiCheck } from "react-icons/fi";
 import styles from "./Candidato.module.sass";
 
 export interface ICandidato {
@@ -19,7 +20,7 @@ interface ICandidatoProps {
 }
 
 export const Candidato: React.FC<ICandidatoProps> = ({
-  candidato: { nome, titulo, categoria, id },
+  candidato: { nome, titulo, categoria, id, sala },
 }) => {
   const dispatch = useDispatch();
 
@@ -37,13 +38,17 @@ export const Candidato: React.FC<ICandidatoProps> = ({
   };
 
   return (
-    <li className={`${styles.card} ${selecionado && styles.selecionado}`}>
-      <div className={styles.visual}>
-        <div className={styles.categoria}>{categoria}</div>
-      </div>
-      <div className={styles.infos}>
+    <li
+      className={`${styles.card} ${selecionado && styles.selecionado}`}
+      id={`${id}`}
+    >
+      <div className={styles.borderWrapper}>
         <span className={styles.nome}>{nome}</span>
-        <span className={styles.titulo}>{titulo}</span>
+        <span className={styles.sala}>{sala}</span>
+        <div className={styles.aprInfo}>
+          <span className={styles.categoria}>{categoria}</span>
+          <span className={styles.titulo}>{titulo}</span>
+        </div>
         <button
           className={styles.selectBtn}
           id="participante"
@@ -52,6 +57,9 @@ export const Candidato: React.FC<ICandidatoProps> = ({
         >
           {selecionado ? "Selecionado" : "Selecionar"}
         </button>
+      </div>
+      <div className={styles.checkmarkWrapper}>
+        <FiCheck color="#FFF6F5" size={27} className={styles.checkmark} />
       </div>
     </li>
   );

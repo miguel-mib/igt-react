@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface ICandidatoState {
-  id: number;
+  id: number | undefined;
 }
 
 const initialState = {} as ICandidatoState;

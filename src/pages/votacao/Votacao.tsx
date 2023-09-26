@@ -3,10 +3,8 @@ import { RootSelector } from "../../shared/store/selectors";
 import { CustomButton, Candidato, ICandidato } from "../../shared/components";
 import { useState, useEffect } from "react";
 import { BeatLoader, MoonLoader } from "react-spinners";
-import { useDispatch } from "react-redux";
-import { logoutUser } from "../../shared/store/auth-reducer";
-import styles from "./Votacao.module.sass";
 import axios, { AxiosError } from "axios";
+import styles from "./Votacao.module.sass";
 
 export const Votacao: React.FC = () => {
   const [votacaoLoading, setVotacaoLoading] = useState<boolean>(true);
@@ -16,11 +14,7 @@ export const Votacao: React.FC = () => {
     [] as ICandidato[]
   );
 
-  const dispatch = useDispatch();
-
-  const voucher = useSelector(
-    (state: RootSelector) => state.auth.user?.voucher
-  );
+  const user = useSelector((state: RootSelector) => state.auth.user);
 
   const participanteSelecionado = useSelector(
     (state: RootSelector) => state.candidato
@@ -32,21 +26,22 @@ export const Votacao: React.FC = () => {
     event.preventDefault();
     setError(null);
 
-    // if (Object.keys(participanteSelecionado).length === 0) {
-    //   setError("Você precisa selecionar um participante.");
-    //   return;
-    // }
+    if (enviarLoading) return;
+
+    if (!participanteSelecionado.id) {
+      setError("Nenhum candidato selecionado.");
+      return;
+    }
 
     setEnviarLoading(true);
     try {
       const response = await axios.get(
-        `https://www.lifeeng.com.br/igt/api/api.php?option=votar&voucher=${voucher}&id=${participanteSelecionado.id}`
+        `https://www.lifeeng.com.br/igt/api/api.php?option=votar&voucher=${user?.voucher}&id=${participanteSelecionado.id}`
       );
 
-      console.log(response.data);
       if (!response.data) throw new Error(response.data.message);
 
-      // dispatch(logoutUser());
+      location.reload();
     } catch (e) {
       const error = e as AxiosError;
 
@@ -62,7 +57,7 @@ export const Votacao: React.FC = () => {
     const getCandidato = async () => {
       try {
         const response = await axios.get(
-          "https://www.lifeeng.com.br/igt/api/api.php?option=getcandidato"
+          `https://www.lifeeng.com.br/igt/api/api.php?option=getcandidato&voucher=${user?.voucher}&tipo=${user?.qvotos}`
         );
 
         const candidatosData: ICandidato[] = response.data;
@@ -81,14 +76,14 @@ export const Votacao: React.FC = () => {
     };
 
     getCandidato();
-  }, []);
+  }, [user]);
 
   return (
     <div className={styles.main}>
       <h1 className={styles.titulo}>Votação</h1>
       <form className={styles.form} onSubmit={handleFormSubmit}>
         {votacaoLoading ? (
-          <MoonLoader color="#f7bb4c" size={50} />
+          <MoonLoader color="#b12c3e" size={50} />
         ) : (
           candidatos.length > 0 && (
             <>
